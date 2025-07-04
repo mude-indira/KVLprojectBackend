@@ -39,16 +39,17 @@ public class KvlController {
 		 
 	 }
 	 
+	 
 	 @PostMapping("/login")
-	 public ResponseEntity<?> login(@RequestBody KvlDto request){
-		 String logresult=kvlService.login(request);
-		 if (logresult.equals("Login Successful")) {
-		        // Return email in response if login is successful
-		        return ResponseEntity.ok().body(request.getEmail());
-		    } else {
-		        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-		    }
+	 public ResponseEntity<?> login(@RequestBody KvlDto request) {
+	     String logresult = kvlService.login(request);
+	     if (logresult.equals("Login Successful")) {
+	         return ResponseEntity.ok(request.getEmail()); 
+	     } else {
+	         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+	     }
 	 }
+	 
 	  
 //	 @PostMapping("/login")
 //	 public ResponseEntity<Map<String, String>> login(@RequestBody KvlDto request) {
